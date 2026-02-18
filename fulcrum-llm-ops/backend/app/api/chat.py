@@ -1,11 +1,23 @@
 import sys
 from pathlib import Path
+import os
 import logging
 # Logic to handle importing from root 'app' folder which conflicts with backend 'app' package
 # We add the root 'app' directory to sys.path so we can import modules directly
+# Try the standard relative path first, then Docker paths as fallback
 root_app_path = Path(__file__).resolve().parent.parent.parent.parent.parent / "app"
-if str(root_app_path) not in sys.path:
-    sys.path.insert(0, str(root_app_path))
+docker_app_path = Path("/project/app")
+docker_project_root = Path("/project")
+
+for candidate in [root_app_path, docker_app_path]:
+    if candidate.is_dir() and str(candidate) not in sys.path:
+        sys.path.insert(0, str(candidate))
+
+# Ensure CWD is the project root so relative paths like "demo_data/" work
+for project_root in [root_app_path.parent, docker_project_root]:
+    if (project_root / "demo_data").is_dir():
+        os.chdir(str(project_root))
+        break
 
 try:
     import llm

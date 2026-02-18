@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   # Layer 2: FastAPI Observability Backend
   backend:
