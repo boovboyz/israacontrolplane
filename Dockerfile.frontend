@@ -14,7 +14,7 @@ COPY fulcrum-llm-ops/frontend/ ./
 
 # Build for production
 # The API URL is set to /api so nginx can proxy it to the backend
-ENV VITE_API_BASE_URL=/api
+ENV VITE_API_URL=/api
 RUN npm run build
 
 # Stage 2: Serve with nginx

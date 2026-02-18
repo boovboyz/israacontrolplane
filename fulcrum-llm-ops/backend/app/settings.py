@@ -8,10 +8,7 @@ class Settings(BaseSettings):
     FULCRUM_API_KEY: str = "dev-key-123"
     AUTH_DISABLED: bool = False
     CORS_ORIGINS: list[str] = [
-        "http://127.0.0.1:5173",
-        "http://localhost:5173",
-        "http://127.0.0.1:5174",
-        "http://localhost:5174",
+        "*",
     ]
 
     class Config:
