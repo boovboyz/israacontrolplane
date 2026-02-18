@@ -7,14 +7,14 @@ import logging
 # Try the standard relative path first, then Docker paths as fallback
 root_app_path = Path(__file__).resolve().parent.parent.parent.parent.parent / "app"
 docker_app_path = Path("/project/app")
-docker_project_root = Path("/project")
+docker_rootapp_path = Path("/rootapp")
 
-for candidate in [root_app_path, docker_app_path]:
+for candidate in [root_app_path, docker_app_path, docker_rootapp_path]:
     if candidate.is_dir() and str(candidate) not in sys.path:
         sys.path.insert(0, str(candidate))
 
-# Ensure CWD is the project root so relative paths like "demo_data/" work
-for project_root in [root_app_path.parent, docker_project_root]:
+# Ensure CWD has demo_data/ so relative paths in ingest.py work
+for project_root in [root_app_path.parent, Path("/project"), docker_rootapp_path]:
     if (project_root / "demo_data").is_dir():
         os.chdir(str(project_root))
         break
