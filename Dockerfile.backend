@@ -8,11 +8,6 @@ FROM python:3.11-slim
 #   /backend/          ← FastAPI backend (app/ package)
 # -------------------------------------------------------
 
-# Install system deps
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    && rm -rf /var/lib/apt/lists/*
-
 # Install ALL Python deps (root + backend)
 COPY requirements.txt /tmp/root-req.txt
 COPY fulcrum-llm-ops/backend/requirements.txt /tmp/backend-req.txt
