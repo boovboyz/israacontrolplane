@@ -1,32 +1,41 @@
 FROM python:3.11-slim
 
-WORKDIR /app
+# Recreate the original directory structure so all relative path
+# calculations in the code work correctly:
+#   /project/                          ← project root
+#   /project/app/                      ← Streamlit app modules
+#   /project/demo_data/                ← demo data
+#   /project/fulcrum-llm-ops/backend/  ← FastAPI backend
+#   /project/mlruns/                   ← MLflow data
+#   /project/.env                      ← env file
+
+WORKDIR /project
 
 # Install system deps
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Python deps
-COPY fulcrum-llm-ops/backend/requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# Install Python deps (backend + root requirements)
+COPY fulcrum-llm-ops/backend/requirements.txt /tmp/backend-requirements.txt
+COPY requirements.txt /tmp/root-requirements.txt
+RUN pip install --no-cache-dir -r /tmp/backend-requirements.txt -r /tmp/root-requirements.txt
 
-# Copy backend code
-COPY fulcrum-llm-ops/backend/ ./
-
-# Copy the root-level app/ and demo_data/ directories
-# (backend main.py adds project root to sys.path for shared imports)
-COPY app/ /project/app/
-COPY demo_data/ /project/demo_data/
+# Copy everything in the same structure as the original project
+COPY app/ ./app/
+COPY demo_data/ ./demo_data/
+COPY fulcrum-llm-ops/backend/ ./fulcrum-llm-ops/backend/
+COPY .env.example ./.env
 
 # Create mlruns directory
-RUN mkdir -p /app/mlruns /project/mlruns
+RUN mkdir -p /project/mlruns
 
 # Expose API port
 EXPOSE 8000
 
-# Set environment
-ENV PYTHONPATH=/project:/app
+# Set PYTHONPATH so imports resolve correctly
+ENV PYTHONPATH=/project:/project/app:/project/fulcrum-llm-ops/backend
 
-# Run FastAPI with uvicorn
+# Run from the backend directory (matching the manual start instructions)
+WORKDIR /project/fulcrum-llm-ops/backend
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
