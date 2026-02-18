@@ -1,0 +1,57 @@
+version: "3.8"
+
+services:
+  # Layer 2: FastAPI Observability Backend
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "8000:8000"
+    environment:
+      - MLFLOW_TRACKING_URI=file:/data/mlruns
+      - MLFLOW_EXPERIMENT_NAME=sales-predictor-layer2
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - TOGETHER_API_KEY=${TOGETHER_API_KEY:-}
+      - CORS_ORIGINS=["http://localhost","http://localhost:80","http://localhost:5173","http://localhost:8501"]
+    volumes:
+      - mlruns_data:/data/mlruns
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Layer 3: React Ops Dashboard (served via nginx)
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  # Layer 1: Streamlit Sales Predictor Chatbot
+  streamlit:
+    build:
+      context: .
+      dockerfile: Dockerfile.streamlit
+    ports:
+      - "8501:8501"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - TOGETHER_API_KEY=${TOGETHER_API_KEY:-}
+      - MLFLOW_TRACKING_URI=file:/app/mlruns
+      - MLFLOW_EXPERIMENT_NAME=sales-predictor-layer2
+    volumes:
+      - mlruns_data:/app/mlruns
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  mlruns_data:
+    driver: local

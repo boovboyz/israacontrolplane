@@ -1,0 +1,51 @@
+Opportunity,Region,Product_Category,Amount,Stage,Probability,Expected_Close_Date
+Opp-1000,West,Office,51490,Closed Won,1.0,2026-03-26
+Opp-1001,North,Bedroom,386438,Prospecting,0.1,2026-05-29
+Opp-1002,North,Dining,123809,Negotiation,0.8,2026-02-23
+Opp-1003,South,Bedroom,134874,Closed Won,1.0,2026-05-21
+Opp-1004,Northeast,Seating,150552,Negotiation,0.8,2026-03-21
+Opp-1005,North,Office,170406,Negotiation,0.8,2026-02-03
+Opp-1006,South,Office,58360,Proposal,0.6,2026-05-12
+Opp-1007,South,Bedroom,276588,Closed Won,1.0,2026-01-03
+Opp-1008,North,Bedroom,467377,Qualification,0.3,2026-05-17
+Opp-1009,East,Seating,135184,Proposal,0.6,2026-04-25
+Opp-1010,East,Dining,178647,Negotiation,0.8,2026-04-19
+Opp-1011,South,Bedroom,211583,Negotiation,0.8,2026-05-25
+Opp-1012,West,Bedroom,287859,Negotiation,0.8,2026-06-15
+Opp-1013,South,Dining,297969,Negotiation,0.8,2026-01-01
+Opp-1014,East,Bedroom,310804,Closed Won,1.0,2026-01-15
+Opp-1015,West,Seating,31198,Prospecting,0.1,2026-02-18
+Opp-1016,North,Office,377236,Qualification,0.3,2026-03-26
+Opp-1017,West,Bedroom,277226,Closed Won,1.0,2026-05-20
+Opp-1018,West,Office,295095,Prospecting,0.1,2026-05-27
+Opp-1019,South,Seating,205954,Proposal,0.6,2026-02-22
+Opp-1020,Northeast,Office,478331,Prospecting,0.1,2026-04-18
+Opp-1021,North,Dining,344866,Proposal,0.6,2026-04-11
+Opp-1022,South,Dining,450935,Negotiation,0.8,2026-01-18
+Opp-1023,North,Bedroom,241326,Negotiation,0.8,2026-01-30
+Opp-1024,East,Seating,198535,Closed Won,1.0,2026-01-26
+Opp-1025,North,Seating,147387,Proposal,0.6,2026-01-24
+Opp-1026,South,Dining,64054,Closed Won,1.0,2026-05-13
+Opp-1027,Northeast,Bedroom,209569,Closed Won,1.0,2026-01-13
+Opp-1028,East,Bedroom,443632,Proposal,0.6,2026-02-05
+Opp-1029,South,Dining,346276,Qualification,0.3,2026-02-24
+Opp-1030,East,Office,200605,Closed Won,1.0,2026-02-15
+Opp-1031,Northeast,Seating,139420,Proposal,0.6,2026-05-19
+Opp-1032,West,Seating,407929,Proposal,0.6,2026-01-01
+Opp-1033,Northeast,Seating,405095,Negotiation,0.8,2026-06-16
+Opp-1034,South,Seating,291146,Closed Won,1.0,2026-05-07
+Opp-1035,South,Bedroom,264193,Proposal,0.6,2026-06-11
+Opp-1036,North,Office,266826,Qualification,0.3,2026-02-11
+Opp-1037,East,Dining,247650,Proposal,0.6,2026-01-16
+Opp-1038,East,Dining,477684,Proposal,0.6,2026-06-09
+Opp-1039,South,Office,21368,Closed Won,1.0,2026-03-20
+Opp-1040,East,Bedroom,175625,Qualification,0.3,2026-06-05
+Opp-1041,North,Office,343144,Proposal,0.6,2026-06-27
+Opp-1042,West,Office,396151,Prospecting,0.1,2026-03-14
+Opp-1043,East,Dining,215236,Closed Won,1.0,2026-02-11
+Opp-1044,South,Dining,488425,Closed Won,1.0,2026-06-28
+Opp-1045,West,Bedroom,132916,Negotiation,0.8,2026-04-14
+Opp-1046,West,Bedroom,291697,Proposal,0.6,2026-03-18
+Opp-1047,West,Dining,477279,Prospecting,0.1,2026-02-05
+Opp-1048,East,Seating,83723,Prospecting,0.1,2026-06-04
+Opp-1049,South,Dining,378918,Proposal,0.6,2026-05-13

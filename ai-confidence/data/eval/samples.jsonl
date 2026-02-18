@@ -1,0 +1,2 @@
+{"id":"s1","template":"generic","question":"What is a deductible?","contexts":["A deductible is the amount you pay before coverage begins."],"answer":"A deductible is what you pay before insurance pays."}
+{"id":"s2","template":"idp","question":"Extract invoice total and due date","contexts":["Invoice text ..."],"answer":"total=1200 due_date=2025-02-01","metadata":{"domain":"commerce","schema":"invoice_v1"}}

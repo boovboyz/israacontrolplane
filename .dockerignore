@@ -1,0 +1,38 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+.venv
+venv
+.env
+
+# Node
+node_modules
+fulcrum-llm-ops/frontend/node_modules
+
+# IDE
+.vscode
+.idea
+.claude
+
+# Logs
+*.log
+logs/
+
+# MLflow data (we use a Docker volume instead)
+mlruns/
+fulcrum-llm-ops/backend/mlruns/
+fulcrum-llm-ops/backend/.fulcrum_data/
+
+# Debug files
+debug_*.py
+test_*.py
+verify_*.py
+reproduce_*.py
+
+# Build artifacts
+fulcrum-llm-ops/frontend/dist
